@@ -17,11 +17,15 @@ public class MainPage extends AbstractPage {
         return this;
     }
 
-    public SearchResultsPage clickOnTag() {
-        tag = tagsFromSideBar.get(15);
+//  Метод выбирает тег из бокового меню по его порядковому номеру
+
+    public SearchResultsPage clickOnTag(int number) {
+        tag = tagsFromSideBar.get(number);
         tag.click();
         return new SearchResultsPage();
     }
+
+// Возвращает текст тега который был нажат
 
     public String getTagText() {
         return tag.getText();

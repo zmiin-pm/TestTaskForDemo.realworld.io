@@ -11,8 +11,10 @@ import java.util.stream.Collectors;
 
 public class SearchResultsPage extends AbstractPage {
 
-    @FindBy(css = ".article-preview .tag-list")
+    @FindBy(css = ".article-preview .tag-list") // ul с li в блоке статьи
     List<WebElement> articlesTagList;
+
+    // Достает текст тега из li и помещает в мапу (для ключей используется номер, начиная с 1)
 
     public Map<Integer, List<String>> getTagsTexts() {
         Map<Integer, List<String>> tagsValues = new HashMap<>();
@@ -26,7 +28,9 @@ public class SearchResultsPage extends AbstractPage {
         return tagsValues;
     }
 
-    public boolean checkThatTagsContainsCurrentText(Map<Integer, List<String>> articleTugs, String text) {
+    // Перебирает Value мапы, проверяет что список тегов содежит текст
+
+    public boolean checkThatTagsContainCurrentText(Map<Integer, List<String>> articleTugs, String text) {
         for (Map.Entry<Integer, List<String>> entry : articleTugs.entrySet()) {
             if (!entry.getValue().contains(text)) {
                 return false;
